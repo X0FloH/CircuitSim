@@ -31,18 +31,35 @@ public class SubMenu : MonoBehaviour {
                 }
                 else
                 {
-                    Transform child = menuItem.transform.GetChild(0);
-                    if (child.name == "Button")
+                    foreach (Transform child in menuItem.transform)
                     {
-                        child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
-                        child.Find("ButtonRight").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonRight").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
-                        child.Find("ButtonOff").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonOff").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
-                        child.Find("ButtonInput").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonInput").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonInput").GetComponent<SpriteRenderer>().color.r, child.Find("Input").GetComponent<SpriteRenderer>().color.g, child.Find("Input").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
-                        child.Find("Output").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("Output").GetComponent<SpriteRenderer>().color, new Color(child.Find("Output").GetComponent<SpriteRenderer>().color.r, child.Find("Output").GetComponent<SpriteRenderer>().color.g, child.Find("Output").GetComponent<Image>().color.b, 0f), speed * Time.deltaTime);
-                    }
-                    else
-                    {
-                        child.gameObject.SetActive(true);
+                        if (child.name == "Button")
+                        {
+                            child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
+                            child.Find("ButtonRight").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonRight").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
+                            child.Find("ButtonOff").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonOff").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
+                            child.Find("Input").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("Input").GetComponent<SpriteRenderer>().color, new Color(child.Find("Input").GetComponent<SpriteRenderer>().color.r, child.Find("Input").GetComponent<SpriteRenderer>().color.g, child.Find("Input").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
+                            child.Find("Output").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("Output").GetComponent<SpriteRenderer>().color, new Color(child.Find("Output").GetComponent<SpriteRenderer>().color.r, child.Find("Output").GetComponent<SpriteRenderer>().color.g, child.Find("Output").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            if (child.name == "LED")
+                            {
+                                child.Find("InputLeg").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("InputLeg").GetComponent<SpriteRenderer>().color, new Color(child.Find("InputLeg").GetComponent<SpriteRenderer>().color.r, child.Find("InputLeg").GetComponent<SpriteRenderer>().color.g, child.Find("InputLeg").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
+                                child.Find("Input (1)").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("Input (1)").GetComponent<SpriteRenderer>().color, new Color(child.Find("Input (1)").GetComponent<SpriteRenderer>().color.r, child.Find("Input (1)").GetComponent<SpriteRenderer>().color.g, child.Find("Input (1)").GetComponent<SpriteRenderer>().color.b, 0f), speed * Time.deltaTime);
+                            }
+                            else
+                            {
+                                if (child.name == "Cover")
+                                {
+                                    child.GetComponent<Image>().color = Color.Lerp(child.GetComponent<Image>().color, new Color(child.GetComponent<Image>().color.r, child.GetComponent<Image>().color.g, child.GetComponent<Image>().color.b, 1f), speed * Time.deltaTime);
+                                }
+                                else
+                                {
+                                    child.gameObject.SetActive(true);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -66,11 +83,26 @@ public class SubMenu : MonoBehaviour {
                             child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonMainLeft").GetComponent<SpriteRenderer>().color.b, 1f), speed * Time.deltaTime);
                             child.Find("ButtonRight").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonRight").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonRight").GetComponent<SpriteRenderer>().color.b, 1f), speed * Time.deltaTime);
                             child.Find("ButtonOff").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonOff").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.r, child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.g, child.Find("ButtonOff").GetComponent<SpriteRenderer>().color.b, 1f), speed * Time.deltaTime);
-                            child.Find("ButtonInput").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("ButtonInput").GetComponent<SpriteRenderer>().color, new Color(child.Find("ButtonInput").GetComponent<SpriteRenderer>().color.r, child.Find("Input").GetComponent<SpriteRenderer>().color.g, child.Find("Input").GetComponent<SpriteRenderer>().color.b, 1f), speed * Time.deltaTime);
+                            child.Find("Input").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("Input").GetComponent<SpriteRenderer>().color, new Color(child.Find("Input").GetComponent<SpriteRenderer>().color.r, child.Find("Input").GetComponent<SpriteRenderer>().color.g, child.Find("Input").GetComponent<SpriteRenderer>().color.b, 1f), speed * Time.deltaTime);
                             child.Find("Output").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("Output").GetComponent<SpriteRenderer>().color, new Color(child.Find("Output").GetComponent<SpriteRenderer>().color.r, child.Find("Output").GetComponent<SpriteRenderer>().color.g, child.Find("Output").GetComponent<SpriteRenderer>().color.b, 1f), speed * Time.deltaTime);
                         } else
                         {
-                            child.gameObject.SetActive(true);
+                            if(child.name == "LED")
+                            {
+                                child.Find("InputLeg").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("InputLeg").GetComponent<SpriteRenderer>().color, new Color(child.Find("InputLeg").GetComponent<SpriteRenderer>().color.r, child.Find("InputLeg").GetComponent<SpriteRenderer>().color.g, child.Find("InputLeg").GetComponent<SpriteRenderer>().color.b, 1f), speed * Time.deltaTime);
+                                child.Find("Input (1)").GetComponent<SpriteRenderer>().color = Color.Lerp(child.Find("Input (1)").GetComponent<SpriteRenderer>().color, new Color(child.Find("Input (1)").GetComponent<SpriteRenderer>().color.r, child.Find("Input (1)").GetComponent<SpriteRenderer>().color.g, child.Find("Input (1)").GetComponent<SpriteRenderer>().color.b, 1f), speed * Time.deltaTime);
+                            }
+                            else
+                            {
+                                if(child.name == "Cover")
+                                {
+                                    child.GetComponent<Image>().color = Color.Lerp(child.GetComponent<Image>().color, new Color(child.GetComponent<Image>().color.r, child.GetComponent<Image>().color.g, child.GetComponent<Image>().color.b, 0f), speed * Time.deltaTime);
+                                }
+                                else
+                                {
+                                    child.gameObject.SetActive(true);
+                                }
+                            }
                         }
                     }
                 }
